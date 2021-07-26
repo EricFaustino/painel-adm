@@ -1,0 +1,234 @@
+<!-- NOVO  -->
+<div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded" [ngClass]="color === 'light' ? 'bg-white' : 'bg-white text-white'" *ngIf="novo">
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <button class="text-gray-700 bg-gray-1000 active:bg-gray-1100 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button" (click)="novo = false">
+          Voltar
+        </button>
+
+                <h1 style="margin-top: 20px;" class="text-base text-gray-700" style="margin-top: 20px; font-weight: 500;" [ngClass]="color === 'light' ? 'text-gray-800' : 'text-white'">
+                    Novo produto
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="block w-full overflow-x-auto">
+        <div class="flex flex-wrap" style="padding: 15px">
+
+            <div class="w-full lg:w-6/12 px-4">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Imagem de destaque
+          </label>
+                    <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" class="border-gray-700 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                    />
+                </div>
+            </div>
+
+            <div class="w-full lg:w-6/12 px-4">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Categoria
+          </label>
+                    <select class="border-gray-700  px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150" [(ngModel)]="produto.categoria">
+            <option *ngFor="let c of categorias" value="{{c.id}}">{{c.titulo}}
+            </option>
+          </select>
+                </div>
+            </div>
+
+
+            <div class="w-full lg:w-6/12 px-4">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Nome
+          </label>
+                    <input type="text" class="border-gray-700  px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150" [(ngModel)]="produto.titulo" />
+                </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+                <div class="relative w-full mb-3">
+                    <label class=" block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Preço (R$)
+          </label>
+                    <input type="number" class="border-gray-700  px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150" [(ngModel)]="produto.preco" />
+                </div>
+            </div>
+
+            <div class="w-full lg:w-12 px-4">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Descrição
+          </label>
+                    <textarea type="text" class="border-gray-700  px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150" [(ngModel)]="produto.descricao"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- OPCIONAIS -->
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <h1 style="margin-top: 20px;" class="block uppercase text-gray-700 text-base font-bold mb-2" [ngClass]="color === 'light' ? 'text-gray-800' : 'text-white'">
+                    Opções (variações do produto)
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="block w-full overflow-x-auto">
+        <div class="flex flex-wrap" style="padding: 15px">
+
+            <div class="w-full lg:w-6/12 px-4">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Título
+          </label>
+                    <input type="text" class="border-gray-700 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150" [(ngModel)]="opcional" />
+                </div>
+            </div>
+
+            <div class="w-full lg:w-12 px-4" *ngFor="let opcao of produto.variacoes; let i = index">
+                <div class="relative w-full mb-3">
+                    <label class="border-gray-700 block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            {{opcao.titulo}} <span (click)="removerOpcional(i)" class="remover">Remover</span>
+          </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <button class="text-gray-700 bg-gray-1000 active:bg-gray-1100 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button" (click)="addOpcional()">
+          Adicionar
+        </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADICIONAIS -->
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <h1 style="margin-top: 20px;" class="block uppercase text-gray-700 text-base font-bold mb-2" [ngClass]="color === 'light' ? 'text-gray-800' : 'text-white'">
+                    Adicionais
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="block w-full overflow-x-auto">
+        <div class="flex flex-wrap" style="padding: 15px">
+            <div class="w-full lg:w-6/12 px-4">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Título
+          </label>
+                    <input type="text" class="border-gray-700 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150" [(ngModel)]="adicional.titulo" />
+                </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Preço
+          </label>
+                    <input type="number" class="border-gray-700 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150" [(ngModel)]="adicional.preco" />
+                </div>
+            </div>
+
+            <div class="w-full lg:w-12 px-4" *ngFor="let opcao of produto.adicionais; let i = index">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            {{opcao.titulo}} - R${{opcao.preco}} <span (click)="removerAdicional(i)" class="remover">Remover</span>
+          </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <button class="text-gray-700 bg-gray-1000 active:bg-gray-1100 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button" (click)="addAdicional()">
+          Adicionar
+        </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <button class="text-gray-700 bg-gray-1000 active:bg-gray-1100 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button" (click)="salvar()" style="margin-left: 90%;">
+          Salvar
+        </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- LISTA  -->
+<div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded" [ngClass]="color === 'light' ? 'bg-white' : 'bg-white text-white'" *ngIf="!novo">
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <button class="text-gray-700 bg-gray-1000 active:bg-gray-1100  font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button" (click)="novo = true">
+          Adicionar novo
+        </button>
+
+                <h1 style="margin-top: 20px;" class="text-base text-gray-700" style="margin-top: 20px; font-weight: 500;" [ngClass]="color === 'light' ? 'text-gray-800' : 'text-white'">
+                    Produtos
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="block w-full overflow-x-auto">
+        <table class="items-center w-full bg-transparent border-collapse">
+            <thead>
+                <tr>
+                    <th class="px-6 align-middle border border-solid py-3 text-base uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left" [ngClass]="
+              color === 'light'
+                ? 'bg-gray-100 text-gray-600 border-gray-200'
+                : 'bg-gray-1000 text-gray-700 border-gray-1000'
+            ">
+                        Nome
+                    </th>
+                    <th class="px-6 align-middle border border-solid py-3 text-base uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left" [ngClass]="
+              color === 'light'
+                ? 'bg-gray-100 text-gray-600 border-gray-200'
+                : 'bg-gray-1000 text-gray-700 border-gray-1000'
+            ">
+                        Preço
+                    </th>
+                    <th class="px-6 align-middle border border-solid py-3 text-base uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left" [ngClass]="
+            color === 'light'
+              ? 'bg-gray-100 text-gray-600 border-gray-200'
+              : 'bg-gray-1000 text-gray-700 border-gray-1000'
+          ">
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of produtos">
+                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-lg whitespace-no-wrap p-4 text-left flex items-center">
+                        <img [src]="p.imagem" class="h-16 w-16 bg-white rounded-full border" alt="..." />
+                        <span class="ml-3 font-semibold" [ngClass]="color === 'light' ? 'text-gray-700' : 'text-gray-700'">
+              {{p.titulo}}
+            </span>
+                    </th>
+                    <td class="text-gray-700 border-t-0 px-6 align-middle border-l-0 border-r-0 text-lg whitespace-no-wrap p-4">
+                        R${{p.preco}}
+                    </td>
+
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-no-wrap p-4 text-right">
+                        <div class="excluirDiv" (click)="excluir(p.id)">Excluir</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

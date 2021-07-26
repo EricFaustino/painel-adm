@@ -1,0 +1,90 @@
+<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+    <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+
+        <h3 class="text-base text-gray-700" style="margin-top: 20px;">
+            Configurações de cores
+        </h3>
+        <div class="flex flex-wrap" style="margin-top: 10px;">
+
+
+            <!-- CORES -->
+            <div class="w-full lg:w-12 px-4" style="padding: 0px !important;">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Cor principal
+          </label>
+                    <input [(colorPicker)]="config.color" [style.background]="config.color" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150" />
+                </div>
+            </div>
+
+            <div class="w-full lg:w-12 px-4" style="padding: 0px !important;">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Cor titulos inicio
+          </label>
+                    <input [(colorPicker)]="config.tituloInicio" [style.background]="config.tituloInicio" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                    />
+                </div>
+            </div>
+
+            <div class="w-full lg:w-12 px-4" style="padding: 0px !important;">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Cor titulos 
+          </label>
+                    <input [(colorPicker)]="config.titulo" [style.background]="config.titulo" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150" />
+                </div>
+            </div>
+
+            <div class="w-full lg:w-12 px-4" style="padding: 0px !important;">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Cor subtitulos
+          </label>
+                    <input [(colorPicker)]="config.subtitle" [style.background]="config.subtitle" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150" />
+                </div>
+            </div>
+
+            <div class="w-full lg:w-12 px-4" style="padding: 0px !important;">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Cor textos
+          </label>
+                    <input [(colorPicker)]="config.textos" [style.background]="config.textos" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150" />
+                </div>
+            </div>
+
+            <div class="w-full lg:w-12 px-4" style="padding: 0px !important;">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Cor icones sidebar
+          </label>
+                    <input [(colorPicker)]="config.iconeSide" [style.background]="config.iconeSide" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                    />
+                </div>
+            </div>
+
+            <div class="w-full lg:w-12 px-4" style="padding: 0px !important;">
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-base font-bold mb-2" htmlFor="grid-password">
+            Cor icones navbar
+          </label>
+                    <input [(colorPicker)]="config.iconeNav" [style.background]="config.iconeNav" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150" />
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <button [disabled]="isLoading" class="bg-loading text-gray-700 bg-gray-1000 inline-flex justify-center items-center font-semibold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1" type="button" (click)="salvar()">
+                    <img class="h-5 pr-4" *ngIf="isLoading" src="../../../../../assets/img/download.gif">
+                    Salvar
+        </button>
+            </div>
+        </div>
+    </div>
+
+</div>

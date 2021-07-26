@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "vikings-cardapio"
+  },
+    "targets": {
+    "vikings-cardapio": {
+      "hosting": {
+        "admin-vikings": [
+          "admin-vikings"
+        ]
+      }
+    }
+  }
+}
